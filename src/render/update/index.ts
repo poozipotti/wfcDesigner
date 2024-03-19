@@ -1,9 +1,26 @@
-import { Tstate } from "../state";
+export interface Tstate {
+  backgroundColor: string;
+}
+const initialState: Tstate = {
+  backgroundColor: "#00FF00",
+};
+
+export function init(callback: () => void) {
+  const handler = {
+    set(target: Tstate, prop: keyof Tstate, value: unknown) {
+      const set = Reflect.set(target, prop, value);
+      callback();
+      return set;
+    },
+  };
+  const state = new Proxy(initialState, handler);
+  return state;
+}
 
 export default class Updater {
   state: Tstate;
-  constructor(state: Tstate) {
-    this.state = state;
+  constructor(operationCallback: ()=>void) {
+    this.state = init(operationCallback);
   }
   randomBackgroundColor() {
     this.state.backgroundColor =
