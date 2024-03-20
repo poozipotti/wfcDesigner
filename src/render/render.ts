@@ -19,6 +19,7 @@ export function setupRenderer(canvas: HTMLCanvasElement) {
     flagDirty();
   };
 
+  
   return updater;
 }
 

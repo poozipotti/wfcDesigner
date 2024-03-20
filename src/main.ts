@@ -13,6 +13,7 @@ function init() {
     const RenderMethods = render.setupRenderer(canvas)
     RenderMethods.randomBackgroundColor();
   });
+
 }
 
 
