@@ -13,20 +13,4 @@ export default class Updater {
   randomBackgroundColor() {
     this.state.backgroundColor = Updater.getRandomColor();
   }
-  addRandomRects(amount: number) {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    for (let i = 0; i < amount; i++) {
-      this.state.rects = [
-        ...this.state.rects,
-        {
-          x: Math.random() * width,
-          y: Math.random() * height,
-          width: Math.random() * 200,
-          height: Math.random() * 200,
-          color: Updater.getRandomColor(),
-        },
-      ];
-    }
-  }
 }
